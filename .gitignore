@@ -1,3 +1,38 @@
-# Ignore application.properties to avoid committing secrets
-src/main/resources/application.properties
+# IDEs and editors
+.idea/
+.vscode/
+*.iml
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backend build output
+/target/
+
+# Frontend build output
+/ui/node_modules/
+/ui/.next/
+/ui/dist/
+
+# Environment files
+*.env
+*.env.*
+
+# Log files
+*.log
+
+# Docker
+**/Dockerfile*
+**/docker-compose*
+
+# Misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore local properties, but keep example
+/src/main/resources/application.properties
+!/src/main/resources/application.properties.example
 
