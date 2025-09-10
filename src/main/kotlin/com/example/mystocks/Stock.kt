@@ -9,14 +9,7 @@ data class Stock(val symbol: String, val price: Double)
 data class PortfolioEntry(
     @Id val id: String? = null,
     val symbol: String,
-    val quantity: Int
-)
-
-data class PortfolioViewEntry(
-    val id: String?,
-    val symbol: String,
-    val quantity: Int,
-    val price: Double?
+    val quantity: Double
 )
 
 data class PortfolioDeleteRequest(val id: String? = null)
