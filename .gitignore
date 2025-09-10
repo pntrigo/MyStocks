@@ -1,0 +1,3 @@
+# Ignore application.properties to avoid committing secrets
+src/main/resources/application.properties
+

@@ -1,0 +1,43 @@
+services:
+  mongo:
+    image: mongo:7.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: mystocks
+
+  backend:
+    build: .
+    container_name: mystocks-backend
+    environment:
+      - ALPHA_VANTAGE_API_KEY=${ALPHA_VANTAGE_API_KEY}
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/mystocks
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+    # Uncomment if you want to mount local code for hot reload (dev only)
+    # volumes:
+    #   - ./src:/app/src
+
+  frontend:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    container_name: mystocks-frontend
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8080
+    depends_on:
+      - backend
+    # Uncomment if you want to mount local code for hot reload (dev only)
+    # volumes:
+    #   - ./ui/src:/app/src
+
+volumes:
+  mongo-data:
