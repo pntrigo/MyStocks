@@ -1,5 +1,0 @@
-# Example application.properties (do not commit secrets)
-# server.port=8080
-spring.data.mongodb.uri=mongodb://localhost:27017/mystocks
-alpha_vantage.api_key=YOUR_API_KEY_HERE
-
